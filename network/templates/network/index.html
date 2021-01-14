@@ -1,0 +1,17 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1> All Posts </h1>
+
+    {% if user.is_authenticated %}
+        {{ create }}
+    {% else %}
+        Sign in to make posts.
+    {% endif %}
+    {% for post in postings %}
+        <div> 
+            <a class="nav-link" href="{% url 'profile' post.writer %}"> {{ post.writer }} </a>
+            {{ post.data }} 
+        </div>
+    {% endfor %}
+{% endblock %}

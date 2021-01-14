@@ -1,0 +1,14 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    {{ followed }} followers, following {{ following }}
+    {% for post in userPosts %}
+            <div> 
+                <a class="nav-link" href="{% url 'profile' post.writer %}"> {{ post.writer }} </a>
+                {{ post.data }} 
+            </div>
+    {% endfor %}
+    {% if user != userProfile %}
+       {{ follow }}
+    {% endif %}
+{% endblock %}
